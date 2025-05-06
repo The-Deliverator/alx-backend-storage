@@ -1,0 +1,2 @@
+//Inserts a document.
+db.school.Insert({ name : "ALX"});
