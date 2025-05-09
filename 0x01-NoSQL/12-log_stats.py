@@ -3,7 +3,6 @@
 from pymongo import MongoClient
 
 
-
 def get_nginx_stats():
     """gives stats about Ngin logs stored in MongoDB"""
     client = MongoClient("mongodb://localhost:27017/")
@@ -19,8 +18,9 @@ def get_nginx_stats():
         count = collection.count_documents({"method": method})
         print(f"\t{method}: {count}")
 
-    status_count = collection.count_documents({"method": "GET", "path": "/status"})
-    print(f"{status_count} status check logs")
+    count = collection.count_documents({"method": "GET", "path": "/status"})
+    print(f"{count} status check logs")
+
 
 if __name__ == "__main__":
     get_nginx_stats()
